@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -78,12 +74,12 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # User stuff
   users.users.dyl = {
     isNormalUser = true;
     description = "dyl";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;  # <-- Make fish the default shell
+    extraGroups = [ "networkmanager" "libvirtd" "wheel" ];
+    shell = pkgs.fish;  # Makes fish the default
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -119,60 +115,71 @@
     prismlauncher
     gnome-tweaks
     libreoffice-fresh
+    qbittorrent
+    gimp
+    brave
+    vivaldi
+    tor-browser
+    librewolf
+    gnome-boxes
   ];
 
-boot.blacklistedKernelModules = [ "nouveau" ];
+  boot.blacklistedKernelModules = [ "nouveau" ];
 
-# Enable NVIDIA + AMD hybrid graphics (Zephyrus G14)
-services.xserver.videoDrivers = [ "nvidia" ];
+  # Enable NVIDIA + AMD hybrid graphics (Zephyrus G14)
+  services.xserver.videoDrivers = [ "nvidia" ];
 
-hardware.opengl = {
-  enable = true;
-  extraPackages = with pkgs; [
-    vulkan-tools
-    vulkan-validation-layers
-    vulkan-loader
-  ];
-};
-
-hardware.nvidia = {
-  modesetting.enable = true;
-  powerManagement.enable = true;
-  nvidiaSettings = true;
-  open = false;  # keep false for proprietary drivers (better for gaming)
-  package = config.boot.kernelPackages.nvidiaPackages.latest;
-
-  prime = {
-    offload.enable = true;
-    amdgpuBusId = "PCI:101:0:0";
-    nvidiaBusId = "PCI:1:0:0";
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vulkan-tools
+      vulkan-validation-layers
+      vulkan-loader
+    ];
   };
-};
 
-# Enable Steam support
-programs.steam = {
-  enable = true;
-  remotePlay.openFirewall = true;   # optional, allows streaming
-  dedicatedServer.openFirewall = true; # optional, for hosting
-};
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    nvidiaSettings = true;
+    open = false;  # keep false for proprietary drivers (better for gaming)
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
 
-# Latest kernel is best but for now this works
-boot.kernelPackages = pkgs.linuxPackages_6_6;
+    prime = {
+      offload.enable = true;
+      amdgpuBusId = "PCI:101:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
 
-# Only the WMI module your laptop uses
-boot.kernelModules = [ "asus-wmi" ];
+  # Enable Steam support
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;   # optional, allows streaming
+    dedicatedServer.openFirewall = true; # optional, for hosting
+  };
 
-# Enable Supergfxctl (GPU switching)
-services.supergfxd.enable = true;
+  # Latest kernel is best but for now this works
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
 
-# Temporary fix for GPU detection (safe even if not needed later)
-systemd.services.supergfxd.path = [ pkgs.pciutils ];
+  # Only the WMI module your laptop uses
+  boot.kernelModules = [ "asus-wmi" ];
 
-# Enable Asus control daemon + user service
-services.asusd = {
-  enable = true;
-  enableUserService = true;
-};
+  # Enable Supergfxctl (GPU switching)
+  services.supergfxd.enable = true;
+
+  # Temporary fix for GPU detection (safe even if not needed later)
+  systemd.services.supergfxd.path = [ pkgs.pciutils ];
+
+  # Enable Asus control daemon + user service
+  services.asusd = {
+    enable = true;
+    enableUserService = true;
+  };
+
+  # Virtualization stuff
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;  # optional GUI tool for fine control
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
