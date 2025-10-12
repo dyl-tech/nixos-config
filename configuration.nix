@@ -145,6 +145,7 @@
     #
     vlc
     thunderbird
+   # birdtray
     mullvad-vpn
   ];
 
