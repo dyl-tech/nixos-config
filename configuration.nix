@@ -43,8 +43,9 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -117,6 +118,7 @@
     libreoffice-fresh
     qbittorrent
     gimp
+    cmatrix
     brave
     vivaldi
     tor-browser
@@ -124,6 +126,26 @@
     gnome-boxes
     telegram-desktop
     ntfs3g
+    # Cybersecurity workflow stuff
+    wireshark
+    nmap
+    metasploit
+    john
+    sqlmap
+    hashcat
+    recon-ng
+    maltego
+    social-engineer-toolkit
+    ghidra
+    burpsuite
+    aircrack-ng
+    bettercap
+    nikto
+    wpscan
+    #
+    vlc
+    thunderbird
+    mullvad-vpn
   ];
 
   boot.blacklistedKernelModules = [ "nouveau" ];
