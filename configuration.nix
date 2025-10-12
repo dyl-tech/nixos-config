@@ -20,7 +20,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
+  # Set time zone
   time.timeZone = "America/Chicago";
   time.hardwareClockInLocalTime = true;
 
@@ -122,6 +122,8 @@
     tor-browser
     librewolf
     gnome-boxes
+    telegram-desktop
+    ntfs3g
   ];
 
   boot.blacklistedKernelModules = [ "nouveau" ];
@@ -159,8 +161,8 @@
     dedicatedServer.openFirewall = true; # optional, for hosting
   };
 
-  # Latest kernel is best but for now this works
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  # Latest kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Only the WMI module your laptop uses
   boot.kernelModules = [ "asus-wmi" ];
