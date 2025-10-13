@@ -86,6 +86,11 @@
     ];
   };
 
+  # Swap
+  swapDevices = [
+    { device = "/swapfile"; size = 32768; }  # 32 GB swap file
+  ];
+
   # Allow fish as a login shell
   programs.fish.enable = true;
 
