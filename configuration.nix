@@ -152,6 +152,7 @@
     thunderbird
    # birdtray
     mullvad-vpn
+    obs-studio
   ];
 
   boot.blacklistedKernelModules = [ "nouveau" ];
