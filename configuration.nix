@@ -42,15 +42,9 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable Sway
-  programs.sway.enable = true;
-
   # Enable the GNOME Desktop Environment.
   services.desktopManager.gnome.enable = true;
   services.displayManager.gdm.enable = true;
-
-  # Add Sway to GDM's available sessions
-  services.displayManager.sessionPackages = [ pkgs.sway ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -151,15 +145,6 @@
     bettercap
     nikto
     wpscan
-  # Sway stuff
-    waybar
-    wofi
-    mako
-    swayidle
-    swaylock
-    grim
-    slurp
-    wl-clipboard
   ];
 
   boot.blacklistedKernelModules = [ "nouveau" ];
