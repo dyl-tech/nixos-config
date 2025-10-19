@@ -129,22 +129,8 @@
     mullvad-vpn
     obs-studio
     blender
-  # Cybersecurity stuff
     wireshark
-    nmap
-    metasploit
-    john
-    sqlmap
-    hashcat
-    recon-ng
-    maltego
-    social-engineer-toolkit
-    ghidra
-    burpsuite
-    aircrack-ng
-    bettercap
-    nikto
-    wpscan
+    mediawriter
   ];
 
   boot.blacklistedKernelModules = [ "nouveau" ];
