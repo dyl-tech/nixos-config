@@ -16,6 +16,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Wireguard
+  networking.wireguard.enable = true;
+
   # Set time zone
   time.timeZone = "America/Chicago";
   time.hardwareClockInLocalTime = true;
@@ -122,6 +125,7 @@
     blender
     wireshark
     mediawriter
+    wireguard-tools
   ];
 
   boot.blacklistedKernelModules = [ "nouveau" ];
@@ -180,6 +184,7 @@
   # Virtualization stuff
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
-
-  system.stateVersion = "25.05"; # Did you read the comment?
+  
+  # System state version
+  system.stateVersion = "25.05";
 }
