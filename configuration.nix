@@ -2,20 +2,16 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ # Include the results of the hardware scan
       ./hardware-configuration.nix
     ];
 
-  # Bootloader.
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  # Define hostname
+  networking.hostName = "nixos";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -24,7 +20,7 @@
   time.timeZone = "America/Chicago";
   time.hardwareClockInLocalTime = true;
 
-  # Select internationalisation properties.
+  # Select internationalisation properties
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -39,10 +35,10 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
+  # Enable the X11 windowing system
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
+  # Enable the GNOME Desktop Environment
   services.desktopManager.gnome.enable = true;
   services.displayManager.gdm.enable = true;
 
@@ -52,10 +48,10 @@
     variant = "";
   };
 
-  # Enable CUPS to print documents.
+  # Enable CUPS to print documents
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
+  # Enable sound with pipewire
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -64,9 +60,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # User stuff
   users.users.dyl = {
@@ -87,7 +80,7 @@
   # Allow fish as a login shell
   programs.fish.enable = true;
 
-  # Install firefox.
+  # Install firefox
   programs.firefox.enable = true;
 
   # Allow unfree packages
