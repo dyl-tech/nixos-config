@@ -68,13 +68,12 @@
     extraGroups = [ "networkmanager" "libvirtd" "wheel" ];
     shell = pkgs.fish;  # Makes fish the default
     packages = with pkgs; [
-    #  thunderbird
     ];
   };
 
   # Swap
   swapDevices = [
-    { device = "/swapfile"; size = 32768; }  # 32 GB swap file
+    { device = "/swapfile"; size = 32768; }
   ];
 
   # Allow fish as a login shell
@@ -96,7 +95,6 @@
     fastfetch
     kitty
     discord
-    fish
     steam
     wget
     btop
