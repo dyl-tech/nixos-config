@@ -126,6 +126,9 @@
     wireshark
     mediawriter
     wireguard-tools
+    freecad
+    openscad
+    orca-slicer
   ];
 
   boot.blacklistedKernelModules = [ "nouveau" ];
