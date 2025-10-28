@@ -129,6 +129,7 @@
     freecad
     openscad
     orca-slicer
+    lunar-client
   ];
 
   boot.blacklistedKernelModules = [ "nouveau" ];
