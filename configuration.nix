@@ -18,6 +18,9 @@
 
   # Wireguard
   networking.wireguard.enable = true;
+  
+  # SSH
+  services.openssh.enable = true;  
 
   # Set time zone
   time.timeZone = "America/Chicago";
@@ -130,6 +133,9 @@
     openscad
     orca-slicer
     lunar-client
+    solaar
+    openssl
+    termius
   ];
 
   boot.blacklistedKernelModules = [ "nouveau" ];
