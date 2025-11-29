@@ -118,6 +118,7 @@
     vivaldi
     tor-browser
     librewolf
+    mullvad-browser
     gnome-boxes
     telegram-desktop
     ntfs3g
@@ -135,7 +136,9 @@
     lunar-client
     solaar
     openssl
-    termius
+    signal-desktop
+    wine
+    lutris
   ];
 
   boot.blacklistedKernelModules = [ "nouveau" ];
